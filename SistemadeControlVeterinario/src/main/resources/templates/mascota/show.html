@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Detalle Mascota</title>
+</head>
+<body>
+
+<div>
+
+	<div>
+		<!-- <a th:href="@{/inicio/parametro(nombre='Scrapy')}">Mi mascota es</a>
+		<a th:href="@{/inicio/parametro(nombre='Scrapy',categoria ='Canino')}">Mi mascota es</a> -->
+	</div>
+	
+	<table>
+		<tr>
+			<th>Nombre</th>
+			<th>Edad</th>
+			<th>Información</th>
+		</tr>
+		<tr>
+			<td th:text="${mascota.nombre}"></td>
+			<td th:text="${mascota.edad}"></td>
+			<td th:if="${mascota.categoria.equals('Canino')}">Su mascota es un canino</td>
+		</tr>
+	</table>
+	
+</div>
+
+</body>
+</html>
