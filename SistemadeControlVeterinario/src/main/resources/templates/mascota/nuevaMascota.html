@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="ui inverted segment">
+	<div class="following bar">
+		<div class="ui container">
+			<div class="ui large inverted secondary network menu">
+				<div class="item">
+					<img class="ui image" style="width:60px; heigh:60px" th:src="@{/img/icono.png}">
+				</div>
+				<div class="right menu">
+					<div class="item">
+						
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+	<div class ="ui container">
+		<form class="ui form" th:action="@{/app/mascota/save}" th:object="${mascota}" method="post">
+		  
+		  <div th:replace="mascota/_form::fields(mascota)"></div>
+		  <button class="ui primary button" type="submit">Aceptar</button>
+		  <a th:href="@{/app/mascota/index}" class="ui button">Cancelar</a>
+		</form>
+	</div>
+
+</body>
+</html>

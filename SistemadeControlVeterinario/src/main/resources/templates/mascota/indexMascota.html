@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+</head>
+<body class="index pushable">
+<div class="">
+	<div class="following bar">
+		<div class="ui container">
+			<div class="ui large inverted secondary network menu">
+				<div class="item">
+					<img class="ui image" style="width:60px; heigh:60px" th:src="@{/img/icono.png}">
+				</div>
+				<div class="right menu">
+					<div class="item">
+						
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+	<div class ="ui container">
+		<div class="ui center aligned container">
+			<div th:replace="mascota/_opciones::fields(mascota)"></div>
+		</div>
+	
+		<table class="ui celled table">
+		  <thead>
+		    <tr>
+		      <th>Nombre</th>
+		      <th>Edad</th>
+		      <th>Categoría</th>
+		      <th>Acciones</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr th:each="mascota:${mascotas}">
+		      <td th:text="${mascota.nombre}"></td>
+		      <td th:text="${mascota.edad}"></td>
+		      <td th:text="${mascota.categoria}"></td>
+		      <td> <div class="ui buttons">
+				  <a class="ui red button" th:href="@{/app/mascota/delete/}+${mascota.id}" onclick="confirm('¿Eliminar el registro?')"><i class="cut icon"></i>Eliminar</a>
+				  <div class="or"></div>
+				  <a class="ui positive button" th:href="@{/app/mascota/edit/}+${mascota.id}" >Actualizar<i class="edit right icon"></i></a>
+				</div>
+				<a class="ui teal basic button" th:href="@{/app/mascota/show/}+${mascota.id}" >Detalles<i class="edit right icon"></i></a>
+		      </td>
+		    </tr>
+		  </tbody>
+		</table>
+	
+	</div>
+</body>
+
+<script type="text/javascript" th:src="@{/js/semantic.js}"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</html>
