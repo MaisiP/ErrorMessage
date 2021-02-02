@@ -14,8 +14,4 @@ public class HomeController {
 		model.addAttribute("saludo"," Bienvenido a nuestra Aplicación ");
 		return "index";
 	}
-	
-	
-	
-	
 }
