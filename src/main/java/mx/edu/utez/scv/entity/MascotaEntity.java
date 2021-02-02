@@ -95,6 +95,13 @@ public class MascotaEntity implements Serializable {
 	public void setPropietarioEntity(PropietarioEntity propietarioEntity) {
 		this.propietarioEntity = propietarioEntity;
 	}
+
+	@Override
+	public String toString() {
+		return "MascotaEntity [id=" + id + ", nombre=" + nombre + ", categoria=" + categoria + ", edad=" + edad
+				+ ", status=" + status + ", propietarioEntity=" + propietarioEntity + ", expedientes=" + expedientes
+				+ "]";
+	}
 	
 		
 }

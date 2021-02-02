@@ -18,6 +18,7 @@
 			<div class="menu">
 				<a class="item" th:href="@{/app/mascota/index}">Mascotas</a>
 				<a class="item" th:href="@{/app/veterinario/index}">Veterinarios</a>
+				<a class="item" th:href="@{/app/expediente/index}">Expediente</a>
 			</div>
 		</div>
 	</div>
@@ -47,8 +48,6 @@
 				<div class="twelve wide column">
 					<h1>Bienvenido</h1>
 					<h3 th:text="${saludo}"></h3> 
-					<a th:href="@{/app/mascota/show(id=1)}">Mi mascota es</a>
-					<a th:href="@{/app/mascota/show/2}">Mi mascota es</a>
 					
 				</div>
 				

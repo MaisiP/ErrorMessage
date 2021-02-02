@@ -25,6 +25,7 @@
 		  <div class="ui center aligned container">
 			<h3>Datos del propietario</h3>
 		</div>
+		<input type="hidden" name="idPropietario" th:field="*{propietarioEntity.id}">
 		  <div class="field">
 		    <label>Nombre</label>
 		    <input type="text" th:field="*{propietarioEntity.nombre}" >
