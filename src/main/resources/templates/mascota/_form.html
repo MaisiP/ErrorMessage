@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+</head>
+<body th:fragment="fields(mascota)">
+
+		<div class="ui center aligned container">
+			<h3>Datos de la mascota</h3>
+		</div>
+		
+		<div class="field">
+		    <label>Nombre</label>
+		    <input type="text" th:field="*{nombre}" class="" th:errorclass="''" name="name" placeholder="Nombre">
+		  </div>
+		  <div class="field">
+		    <label>Edad</label>
+		    <input type="number" th:field="*{edad}" name="edad" placeholder="Edad">
+		  </div>
+		  <div class="field">
+		    <label>Categoría</label>
+		    <input type="text" th:field="*{categoria}" name="categoria" placeholder="Categoria">
+		  </div>
+		  
+		  <div class="ui center aligned container">
+			<h3>Datos del propietario</h3>
+		</div>
+		  <div class="field">
+		    <label>Nombre</label>
+		    <input type="text" th:field="*{propietarioEntity.nombre}" >
+		  </div>
+		  <div class="field">
+		    <label>Primer Apellido</label>
+		    <input type="text" th:field="*{propietarioEntity.primerApellido}" >
+		  </div>
+		  <div class="field">
+		    <label>Segundo Apellido</label>
+		    <input type="text" th:field="*{propietarioEntity.segundoApellido}" >
+		  </div>
+
+</body>
+</html>

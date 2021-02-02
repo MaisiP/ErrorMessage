@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+</head>
+<body class="index pushable">
+<div class="">
+	<div class="following bar">
+		<div class="ui container">
+			<div class="ui large inverted secondary network menu">
+				<div class="item">
+					<img class="ui image" style="width:60px; heigh:60px" th:src="@{/img/icono.png}">
+					<h1><b>Veterinario</b></h1>
+				</div>
+				<div class="right menu">
+					<div class="item">
+						
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+	<div class ="ui container">
+		<div class="ui center aligned container">
+			<div th:replace="veterinario/_opciones::fields(veterinario)"></div>
+		</div>
+	
+		<table class="ui celled table">
+		  <thead>
+		    <tr>
+		      <th>Nombre</th>
+		      <th>Especialidad</th>
+		      <th>Cédula Profesional</th>
+		      <th>Correo Electrónico</th>
+		      <th>Acciones</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr th:each="veterinario:${veterinarios}">
+		      <td th:text="${veterinario}" ></td>
+		      <td th:text="${veterinario.especialidad}"></td>
+		      <td th:text="${veterinario.cedulaProfesional}"></td>
+		      <td th:text="${veterinario.correo}"></td>
+		      <td> <div class="ui buttons">
+				  <a class="ui red button" th:href="@{/app/veterinario/delete/}+${veterinario.id}" onclick="confirm('¿Eliminar el registro?')"><i class="cut icon"></i>Eliminar</a>
+				  <div class="or"></div>
+				  <a class="ui positive button" th:href="@{/app/veterinario/edit/}+${veterinario.id}" ><i class="edit icon"></i>Actualizar</a>
+				</div>
+		      </td>
+		    </tr>
+		  </tbody>
+		</table>
+	
+	</div>
+</body>
+
+<script type="text/javascript" th:src="@{/js/semantic.js}"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</html>
