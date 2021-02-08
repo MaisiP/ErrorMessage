@@ -68,64 +68,24 @@ public class MascotaController {
 	}
 	
 	@RequestMapping (method= RequestMethod.POST, value= "/mascota/save")
-	@ResponseBody
-	public String save(MascotaEntity mascota) {
+	public String save(MascotaEntity mascota, Model model) {
+		model.addAttribute("mascota", mascota);
+		
 		
 		try {
 			PropietarioEntity propietario = mascota.getPropietarioEntity();
 			propietarioService.save(propietario);
 			mascotaService.save(mascota);
-			return showModal("Se completó con éxito","Success");
+			return "redirect:/app/mascota/index";
 			
 		} catch (Exception e) {
-			
-			return showModal("Causa: ","Warninig");
-		}
-		
-	}
-
-	
-	//--------------------------------------------------------
-	@RequestMapping (method= RequestMethod.POST, value= "/mascota/save1")
-	public String save1(MascotaEntity mascota, Model model) {
-		
-		try {
-			PropietarioEntity propietario = mascota.getPropietarioEntity();
-			propietarioService.save(propietario);
-			mascotaService.save(mascota);
-			return "redirect:index";
-			
-		} catch (Exception e) {
-			
-			String message = "<div class=\"ui basic modal\">\r\n" + 
-					"  <div class=\"ui icon header\">\r\n" + 
-					"    <i class=\"archive icon\"></i>\r\n" + 
-					"    Warning\r\n" + 
-					"  </div>\r\n" + 
-					"  <div class=\"content\">\r\n" + 
-					"    <p>Causa del problema: "+e.getCause()+"</p>\r\n" + 
-					"  </div>\r\n" + 
-					"  <div class=\"actions\">\r\n" + 
-					"    <div class=\"ui green ok inverted button\">\r\n" + 
-					"      <i class=\"checkmark icon\"></i>\r\n" + 
-					"      Accept\r\n" + 
-					"    </div>\r\n" + 
-					"  </div>\r\n" + 
-					"</div>"+
-					"<script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>"
-					+ "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js\"></script>"+
-					"<script>"
-					+ "$(document).ready(function(){\r\n" + 
-					"			$('.ui.basic.modal').modal('show');\r\n" + 
-					"			});\r\n" + 
-					"</script>";
-			
-			model.addAttribute("mascota", mascota);
-			model.addAttribute("message", message);
+			model.addAttribute("message", showModal("mensaje: Los datos ingresados no son aceptables, intenta de nuevo.","Warninig"));
 			return "mascota/nuevaMascota";
 		}
 		
+		
 	}
+
 	
 	@GetMapping("/mascota/edit/{id}")
 	public String edit(@PathVariable long id, Model model) {

@@ -16,8 +16,10 @@ public class MyFilterInterface implements Filter{
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		System.out.print("Entrada al filtro...");
+		System.out.println("Entrada al filtro...");
 		chain.doFilter(request, response);
 		
 	}
+
+	
 }

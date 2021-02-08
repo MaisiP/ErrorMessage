@@ -12,8 +12,9 @@ public class MyFilterConfig {
 		
 		FilterRegistrationBean<MyFilterInterface> registrationBean = new FilterRegistrationBean<>();
 		
+		
 		registrationBean.setFilter(new MyFilterInterface());
-		registrationBean.addUrlPatterns("/*");
+		registrationBean.addUrlPatterns("/app/*");
 		
 		return registrationBean;
 	}
