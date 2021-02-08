@@ -14,7 +14,7 @@ public class MyFilterConfig {
 		
 		
 		registrationBean.setFilter(new MyFilterInterface());
-		registrationBean.addUrlPatterns("/app/*");
+		registrationBean.addUrlPatterns("/app/mascota/save*","/app/mascota/edit/[0-999]*","/app/mascota/update*","/app/mascota/delete*","/app/mascota/create*");
 		
 		return registrationBean;
 	}
