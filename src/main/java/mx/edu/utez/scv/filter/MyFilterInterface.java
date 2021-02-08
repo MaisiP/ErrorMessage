@@ -35,7 +35,7 @@ public class MyFilterInterface implements Filter{
 		HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         
-        String path = request.getRequestURI().substring(request.getContextPath().length()).replaceAll("[/]+$", "");
+        /*String path = request.getRequestURI().substring(request.getContextPath().length()).replaceAll("[/]+$", "");
         
         System.out.println("Current path:" + path);
         boolean allowedPath = ALLOWED_PATHS.contains(path);
@@ -49,10 +49,11 @@ public class MyFilterInterface implements Filter{
 
             chain.doFilter(request, response);
     } else {
-    	
-        response.sendRedirect(request.getContextPath() + "/");
+    	*/
+        response.setStatus(404);
+        response.sendRedirect(request.getContextPath() + "/Error");
         
-    } 
+   
 		
 	}
 
