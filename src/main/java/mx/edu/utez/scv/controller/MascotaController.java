@@ -73,10 +73,13 @@ public class MascotaController {
 		
 		
 		try {
+			
 			PropietarioEntity propietario = mascota.getPropietarioEntity();
 			propietarioService.save(propietario);
 			mascotaService.save(mascota);
-			return "redirect:/app/mascota/index";
+			model.addAttribute("mascota", new MascotaEntity());
+			model.addAttribute("message", showModal("mensaje: Todo salió bien :D","Success"));
+			return "mascota/nuevaMascota";
 			
 		} catch (Exception e) {
 			model.addAttribute("message", showModal("mensaje: Los datos ingresados no son aceptables, intenta de nuevo.","Warninig"));

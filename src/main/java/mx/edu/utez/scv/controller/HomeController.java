@@ -1,5 +1,9 @@
 package mx.edu.utez.scv.controller;
 
+import java.io.IOException;
+
+import javax.management.RuntimeErrorException;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,4 +18,15 @@ public class HomeController {
 		model.addAttribute("saludo"," Bienvenido a nuestra Aplicación ");
 		return "index";
 	}
+	
+	@GetMapping("/runtime")
+	public void runTimeError() throws RuntimeException {
+		throw new RuntimeException(); 
+	}
+	
+	@GetMapping("/iosexception")
+	public void iosexceptionError() throws IOException {
+		throw new IOException(); 
+	}
+	
 }
