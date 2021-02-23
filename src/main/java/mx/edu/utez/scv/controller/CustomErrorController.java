@@ -2,6 +2,7 @@ package mx.edu.utez.scv.controller;
 
 import java.lang.reflect.InvocationTargetException;
 import java.text.ParseException;
+import java.util.Iterator;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -21,8 +22,11 @@ public class CustomErrorController implements ErrorController{
 
 	@ExceptionHandler(value = { Throwable.class })
 		    protected String handleConflict(Exception ex, Model model) {   
+		
 				String codigoError = null;
+				
 		        if (ex instanceof NullPointerException) {
+		        	
 		        	codigoError = "EPS201";
 					
 				}else if (ex instanceof NumberFormatException) {
@@ -55,9 +59,11 @@ public class CustomErrorController implements ErrorController{
 				}else {
 					codigoError = "EPS211";
 				}
-		        if (ex instanceof Object) {
-		        	System.out.println("Tipo de error: " + codigoError + " detalles: " + ex.getMessage());
-				}
+		        
+		        String detalles = ex.getCause()==null ? "El servidor no añadió detalles" : ex.getCause().toString().split(":", 2)[1];
+		        
+		        System.out.println("Tipo de error: " + codigoError + " detalles: " detalles);
+				
 		       
 		        model.addAttribute("error",codigoError);
 		        return "/error";
