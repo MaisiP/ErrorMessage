@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 
-@ControllerAdvice
-@Controller
+@ControllerAdvice // para el uso del exceptionhanlder
+@Controller // para el uso del handler para errores de http
 public class CustomErrorController implements ErrorController{
 
 	@ExceptionHandler(value = { Throwable.class })
@@ -60,13 +60,14 @@ public class CustomErrorController implements ErrorController{
 					codigoError = "EPS211";
 				}
 		        
+				//obtención de detalles omitiendo la clase.
 		        String detalles = ex.getCause()==null ? "El servidor no añadió detalles" : ex.getCause().toString().split(":", 2)[1];
 		        
-		        System.out.println("Tipo de error: " + codigoError + " detalles: " detalles);
+		        System.out.println("Tipo de error: " + codigoError + " detalles: " + detalles);
 				
 		       
 		        model.addAttribute("error",codigoError);
-		        return "/error";
+				return getErrorPath();
 		    }
 	
 	 @RequestMapping("/error")
